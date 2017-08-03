@@ -12,7 +12,7 @@ export class StockService {
   }
   getstock(): Observable<Stock[]> {
       return this.http
-      .get('https://www.alphavantage.co/query?apikey=demo&function=TIME_SERIES_INTRADAY&interval=1min&symbol=MSFT')
+      .get('http://beta2.arabfinance.com/mobileapi/rpc/market/GetSimpleQuotesDetails?Codes=egts,amer,orwe&isArabic=true')
       .map( x => {
       return <Stock []> x.json();
     }).catch((t: Response) => t.json());

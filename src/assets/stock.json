@@ -1,0 +1,5 @@
+ [{ "name": "mge", "rouiter": "EGX0", "values": [12, 17, 18] },
+     { "name": "mgez", "rouiter": "EGX3", "values": [16, 18, 26] },
+     { "name": "mgezz", "rouiter": "EGX5", "values": [19, 22, 27] },
+     { "name": "mgezzzz", "rouiter": "EGX4", "values": [89, 19, 23] }
+ ]

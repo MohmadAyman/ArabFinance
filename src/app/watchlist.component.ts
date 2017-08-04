@@ -13,20 +13,18 @@ import {Stock} from './stock.interface';
     <button (click)="changepressed()" [hidden]="pressed">Edit</button>
     <button (click)="falsepressed()" [hidden]="!pressed"> save </button>
     <ul *ngIf="pressed">
-    <li *ngFor=" let item of stocks , let i=index">
-    <input type="checkbox" [(ngModel)]="userfilter[i]">
-    <div>{{item.N}}</div></li>
     </ul>
     `,
 })
 export class WatchlistComponent implements OnInit {
    pressed = false;
    Stockservice: StockService;
-   stocks: Stock[];
+   stocks: Object= new Array();
    displayed: string[]= new Array();
    userfilter: boolean[]= new Array ();
    values: number[]= new Array();
-   dummy: any;
+   objs: Object[]= new Array();
+   // dummy: JSON;
 
    constructor( Stockservice: StockService) {
  this.Stockservice = Stockservice;
@@ -35,9 +33,10 @@ export class WatchlistComponent implements OnInit {
      for (let i = 0 ; i < 4; i++) {
         this.userfilter[i]  = false;
       }
-    this.Stockservice.getstock().subscribe((data: any ) => {this.dummy = data;
-            this.values = this.dummy._body;
-            console.log(this.values);
+    this.Stockservice.getstock().subscribe((data: Object[] ) => {this.stocks = data;
+            this.objs.push(this.stocks);
+            // this.values = this.dummy;
+            console.log(this.objs);
            } );
   }
   changepressed() {
@@ -46,19 +45,20 @@ export class WatchlistComponent implements OnInit {
       falsepressed() {
         this.displayed = [];
         this.pressed = false;
-        console.log(this.dummy);
-        // for (let i = 0 ; i < 4 ; i++) {
-        //   if (this.userfilter[i] !== false) {
-        //       this.displayed.push(this.stocks[i]);
-        //       // this.val1.push(this.stocks[i].values[0]);
-        //       // this.val2.push(this.stocks[i].values[1]);
-        //       // this.val3.push(this.stocks[i].values[2]);
-        //     } else if (this.userfilter[i] === false) {
-        //       let x = this.displayed[i];
-        //       this.displayed[i] = this.displayed[this.displayed.length - 1];
-        //       this.displayed[this.displayed.length - 1] = x;
-        //       this.displayed.pop();
-        //     }
-  // }
+        // console.log(this.objs);
+        for (let i = 0 ; i < 4 ; i++) {
+          if (this.userfilter[i] !== false) {
+              this.displayed.push((<Stock>this.objs[i]).N);
+              // this.val1.push(this.stocks[i].values[0]);
+              // this.val2.push(this.stocks[i].values[1]);
+              // this.val3.push(this.stocks[i].values[2]);
+            } else if (this.userfilter[i] === false) {
+              let x = this.displayed[i];
+              this.displayed[i] = this.displayed[this.displayed.length - 1];
+              this.displayed[this.displayed.length - 1] = x;
+              this.displayed.pop();
+            }
+  }
 }
 }
+

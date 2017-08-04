@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Http} from '@angular/http';
+import {Http , HttpModule} from '@angular/http';
+import {RouterModule} from '@angular/router';
 import {NameService} from './app.service';
-import {App} from './app.interface';
+import {Stock} from './stock.interface';
+import {StockService} from './stock.service';
+import {Angular2TokenService} from 'angular2-token';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,14 +13,19 @@ import {App} from './app.interface';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  servant: App[];
-  service: NameService;
-  constructor( service: NameService) {
- this.service = service;
+  Stockservice: StockService;
+  stocks: Stock[];
+  constructor( Stockservice: StockService , private _tokenService: Angular2TokenService ) {
+   this.Stockservice = Stockservice;
+   this._tokenService.init();
   }
   ngOnInit() {
-      this.service.getemp().subscribe(data => this.servant = data);
-      // this.service.postemp().subscribe(data => this.servant = data, Error => console.log(Error));
+          // this.Stockservice.getstock().subscribe(data => {this.stocks = data;
+          //   console.log(this.stocks);
+          //   // for (let i = 0 ; i < this.stocks['Time Series (1min)'].length; i++) {
 
+          //   //   }
+          //  } , Error => console.log(Error));
   }
 }
+

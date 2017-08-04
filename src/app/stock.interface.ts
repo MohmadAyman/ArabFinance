@@ -1,4 +1,4 @@
 export class Stock {
 N: string;
-V: Number[];
+V: string;
 }

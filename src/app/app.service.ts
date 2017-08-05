@@ -20,6 +20,5 @@ constructor (private http: Http) {
       return this.http.post('http://localhost:4200/', body).map( x => {
       return <App []> x.json();
     });
-  }*/
-
+  }*///////////////////////////////
 }

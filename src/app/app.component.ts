@@ -8,7 +8,7 @@ import {Angular2TokenService} from 'angular2-token';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'] ,
+  // styleUrls: ['./app.component.css'] ,
   providers: [NameService]
 })
 export class AppComponent implements OnInit {
@@ -28,4 +28,5 @@ export class AppComponent implements OnInit {
           //  } , Error => console.log(Error));
   }
 }
+
 

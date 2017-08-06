@@ -10,11 +10,11 @@ export class StockService {
   constructor (private http: Http) {
 
   }
-  getstock(): Observable<Stock[]> {
+  getstock(): Observable<Stock> {
       return this.http
       .get('http://beta2.arabfinance.com/mobileapi/rpc/market/GetSimpleQuotesDetails?Codes=egts,amer,orwe&isArabic=true')
       .map( x => {
-      return  <Stock[]>x.json();
-    }).catch((t: Response) => t.json());;
+      return  <Stock>x.json();
+    }).catch((t: Response) => t.json());
   }
 }

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import {Http, HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
@@ -9,8 +10,8 @@ import {MoreComponent} from './more.component';
 import {WatchlistComponent} from './watchlist.component';
 import {NewsComponent} from './news.component';
 import {PagenotfoundComponent} from './pagenotfound.component';
-
-
+import {StockService} from './stock.service';
+import {Angular2TokenService , A2tUiModule } from 'angular2-token';
 const approutes: Routes = [{path: 'Home', component: AppComponent},
 { path: 'Watchlist', component: WatchlistComponent } ,
 { path: 'News', component: NewsComponent} ,
@@ -23,9 +24,9 @@ const approutes: Routes = [{path: 'Home', component: AppComponent},
     AppComponent , LoginComponent , MarketComponent , MoreComponent , WatchlistComponent , NewsComponent , PagenotfoundComponent
   ],
   imports: [
-   BrowserModule , HttpModule , RouterModule.forRoot(approutes)
+   BrowserModule , FormsModule , HttpModule , RouterModule.forRoot(approutes) , A2tUiModule
   ],
-  providers: [],
+  providers: [StockService , Angular2TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

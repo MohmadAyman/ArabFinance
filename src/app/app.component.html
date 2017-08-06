@@ -3,12 +3,12 @@
 <div class="card text-center">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
-     
+
             <li class="nav-item">
                 <a class="nav-link" routerLink="/Watchlist">WatchList</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/Login">Login</a>
+                <a class="nav-link" routerLink="/session/sign-in">Login</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/More">More</a>
@@ -26,4 +26,12 @@
 
 <router-outlet></router-outlet>
 
-<!-- </html> -->
+<!-- <ul>
+    <li *ngFor="let item of stocks">{{item.high}}</li>
+    <ul *ngIf="stocks">
+    <li *ngFor="let item of stocks">{{item.values[0]}}</li>
+
+
+
+</ul>
+</ul> -->

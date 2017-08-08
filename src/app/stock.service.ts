@@ -39,7 +39,8 @@ export class StockService implements OnInit {
           link = link + nameobj[i] + ',';
      }
     // console.log(this.nameobj) egts,amer,orwe;
-     link = link + nameobj[nameobj.length - 1][0] + '&isArabic=true';
+     link = link + nameobj[nameobj.length - 1] + '&isArabic=true';
+     console.log(link);
       return this.http
       .get(link)
       .map( x => {
@@ -47,11 +48,10 @@ export class StockService implements OnInit {
     }).catch((t: Response) => t.json());
   }
   getnames(): Observable<string[][]> {
-      let value= this.http
+     return this.http
       // .get('http://beta2.arabfinance.com/mobileapi/rpc/market/GetQuotesList?isArabic=true');
-      .get('./../assets/cmps.json');
-      let v2 = value.map( x => <string[][]> x.json())
+      .get('./../assets/cmps.json')
+      .map( x => <string[][]> x.json())
       .catch((t: Response) => t.json());
-      return v2;
   }
 }

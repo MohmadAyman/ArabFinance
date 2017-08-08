@@ -14,8 +14,10 @@ import {StockService} from './stock.service';
 import {Angular2TokenService , A2tUiModule } from 'angular2-token';
 import {AskBidService} from './asksbids.service';
 // import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 // import {MdButtonModule, MdCheckboxModule} from '@angular/material';
-// import {MdTabsModule} from '@angular/material'; MdTabsModule,, BrowserAnimationsModule
+import {MdTabsModule} from '@angular/material';
 
 const approutes: Routes = [{path: '', component: LoginComponent},
 { path: 'Watchlist', component: WatchlistComponent } ,
@@ -29,7 +31,7 @@ const approutes: Routes = [{path: '', component: LoginComponent},
     AppComponent , LoginComponent , MarketComponent , MoreComponent , WatchlistComponent , NewsComponent , PagenotfoundComponent
   ],
   imports: [
-     BrowserModule , FormsModule , HttpModule  , RouterModule.forRoot(approutes) , A2tUiModule
+    MdTabsModule, BrowserModule , FormsModule , HttpModule , RouterModule.forRoot(approutes) , A2tUiModule
   ],
   providers: [StockService , Angular2TokenService , AskBidService],
   bootstrap: [AppComponent]

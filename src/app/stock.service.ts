@@ -32,7 +32,7 @@ export class StockService implements OnInit {
     //         // console.log(this.objs);
     //        } );
   }
-  getstock(nameobj: string[][]): Observable<string[]> {
+  getstock(nameobj: string[]): Observable<string[]> {
     console.log(nameobj.length);
      let link = 'http://beta2.arabfinance.com/mobileapi/rpc/market/GetSimpleQuotesDetails?Codes=';
      for (let i = 0 ; i < nameobj.length - 1 ; i++) {
@@ -48,7 +48,7 @@ export class StockService implements OnInit {
   }
   getnames(): Observable<string[][]> {
       let value= this.http
-      //.get('http://beta2.arabfinance.com/mobileapi/rpc/market/GetQuotesList?isArabic=true');
+      // .get('http://beta2.arabfinance.com/mobileapi/rpc/market/GetQuotesList?isArabic=true');
       .get('./../assets/cmps.json');
       let v2 = value.map( x => <string[][]> x.json())
       .catch((t: Response) => t.json());

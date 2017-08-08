@@ -1,5 +1,6 @@
 import { Component, OnInit , AfterContentInit, DoCheck } from '@angular/core';
 import {StockService} from './stock.service';
+import {AskBidService} from './asksbids.service';
 import {Stock} from './stock.interface';
 import {Names} from './models/names.interface';
 @Component({
@@ -33,6 +34,7 @@ export class WatchlistComponent implements OnInit {
    pressed = false;
    infodisplayed= false;
    Stockservice: StockService;
+   AskBidService: AskBidService;
    stocks: string[][]= new Array();
    str: string[]= new Array();
    // namesobj: Names;
@@ -41,13 +43,18 @@ export class WatchlistComponent implements OnInit {
     displayed: string[]= new Array();
    displayedobjects: Stock[]= new Array();
    userfilter: boolean[]= new Array ();
+  Asks: string[][]= new Array ();
+  Ask: string[]= new Array ();
+  Bids: string[][]= new Array ();
+  Bid: string[]= new Array ();
    values: number[]= new Array();
    // objs: Stock[]= new Array();
    displayedstock: Stock;
    // dummy: JSON;
 
-   constructor( Stockservice: StockService) {
+   constructor( Stockservice: StockService , AskBidService: AskBidService) {
  this.Stockservice = Stockservice;
+  this.AskBidService = AskBidService;
   }
   ngOnInit() {
      for (let i = 0 ; i < this.names.length; i++) {
@@ -62,6 +69,18 @@ export class WatchlistComponent implements OnInit {
   }
   changepressed() {
         this.pressed = true;
+        this.AskBidService.getasks(this.names[0][0]).subscribe(data  => { this.Ask = data;
+             this.Asks.push(this.Ask);
+            // this.values = this.dummy;
+               console.log(this.Asks);
+          //   console.log(this.names.length);
+           } );
+         this.AskBidService.getbids(this.names[0][0]).subscribe(data  => { this.Bid = data;
+             this.Bids.push(this.Bid);
+            // this.values = this.dummy;
+               console.log(this.Bids);
+          //   console.log(this.names.length);
+           } );
   }
   infonotdisp() {
         this.infodisplayed = false;

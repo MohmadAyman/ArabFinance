@@ -12,6 +12,7 @@ import {NewsComponent} from './news.component';
 import {PagenotfoundComponent} from './pagenotfound.component';
 import {StockService} from './stock.service';
 import {Angular2TokenService , A2tUiModule } from 'angular2-token';
+import {AskBidService} from './asksbids.service';
 const approutes: Routes = [{path: 'Home', component: AppComponent},
 { path: 'Watchlist', component: WatchlistComponent } ,
 { path: 'News', component: NewsComponent} ,
@@ -26,7 +27,7 @@ const approutes: Routes = [{path: 'Home', component: AppComponent},
   imports: [
    BrowserModule , FormsModule , HttpModule , RouterModule.forRoot(approutes) , A2tUiModule
   ],
-  providers: [StockService , Angular2TokenService],
+  providers: [StockService , Angular2TokenService , AskBidService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

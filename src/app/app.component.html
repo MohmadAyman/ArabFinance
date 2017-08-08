@@ -1,37 +1,34 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <!-- <html> -->
-<!-- <div class="card text-center">
-    <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs">
+<nav md-tab-nav-bar>
+  <a md-tab-link
+     *ngFor="let link of navLinks"
+     [routerLink]="link"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+     {{link}}
+  </a>
+</nav>
 
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/Watchlist">WatchList</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/session/sign-in">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/More">More</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/Market">Market</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" routerLink="/News">News</a>
-            </li>
-        </ul>
-    </div>
-
-</div> -->
-
-<md-tab-group>
+<router-outlet></router-outlet>
+<!-- <md-tab-group>
   <md-tab label="Watchlist"><app-watchlist></app-watchlist></md-tab>
   <md-tab label="Market"><app-market></app-market></md-tab>
   <md-tab label="News"><app-news></app-news></md-tab> 
   <md-tab label="Login"><app-login></app-login></md-tab>
 
-</md-tab-group>
+</md-tab-group> -->
+<!-- <nav md-tab-nav-bar>
+  <a md-tab-link
+     *ngFor="let link of navLinks"
+     [routerLink]="link"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    {{tabLink.label}}
+  </a>
+</nav> -->
 
+<router-outlet></router-outlet>
 <!-- <router-outlet></router-outlet> -->
 
 <!-- <ul>

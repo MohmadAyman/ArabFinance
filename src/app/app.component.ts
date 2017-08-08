@@ -13,6 +13,7 @@ import {Angular2TokenService} from 'angular2-token';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+  navLinks: string[] = ['Market', 'Watchlist', 'Login', 'News', 'More'];
   Stockservice: StockService;
   stocks: Stock[];
   constructor( Stockservice: StockService , private _tokenService: Angular2TokenService ) {

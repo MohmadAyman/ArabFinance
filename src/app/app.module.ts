@@ -12,7 +12,8 @@ import {NewsComponent} from './news.component';
 import {PagenotfoundComponent} from './pagenotfound.component';
 import {StockService} from './stock.service';
 import {Angular2TokenService , A2tUiModule } from 'angular2-token';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 // import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 import {MdTabsModule} from '@angular/material';
 
@@ -28,7 +29,7 @@ const approutes: Routes = [{path: '', component: LoginComponent},
     AppComponent , LoginComponent , MarketComponent , MoreComponent , WatchlistComponent , NewsComponent , PagenotfoundComponent
   ],
   imports: [
-    MdTabsModule, BrowserModule , FormsModule , HttpModule , BrowserAnimationsModule , RouterModule.forRoot(approutes) , A2tUiModule
+    MdTabsModule, BrowserModule , FormsModule , HttpModule , RouterModule.forRoot(approutes) , A2tUiModule
   ],
   providers: [StockService , Angular2TokenService],
   bootstrap: [AppComponent]

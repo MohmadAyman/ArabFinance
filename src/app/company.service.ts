@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Http , Response} from '@angular/http';
 import {Rouiter} from './models/rouiter.model';
+import {News} from './news.interface';
+import {Newsbody} from './newsbody.interface';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
@@ -12,18 +14,24 @@ export class CompanyService {
   constructor (private http: Http) {
 
   }
-  getCompany(id: string) {
-          for (let i = 0; i < this.Comapnies.length ; i++) {
-            if (this.Comapnies[i].Id === id) {
-                return this.Comapnies[i];
-            }
-          }
+  getnews(id: Date): Observable<News> {
+ let link = 'http://beta1.arabfinance.com/mobileapi/rpc/market/GetNews?lastPostingTime=';
+    link = link + id + '&count=10&isArabic=false';
+     // console.log(link);
+      return this.http
+      .get(link)
+      .map( x => {
+      return  <string[]>x.json();
+    }).catch((t: Response) => t.json());
   }
-  // getstock(): Observable<Stock> {
-  //     return this.http
-  //     .get('http://beta2.arabfinance.com/mobileapi/rpc/market/GetSimpleQuotesDetails?Codes=egts,amer,orwe&isArabic=true')
-  //     .map( x => {
-  //     return  <Stock>x.json();
-  //   }).catch((t: Response) => t.json());
-  // }
+
+   getnewsdetails(id: number): Observable<Newsbody> {
+ let link = 'http://beta1.arabfinance.com/mobileapi/rpc/market/GetNewsDetails?newsId=';
+    link = link + id ;
+      return this.http
+      .get(link)
+      .map( x => {
+      return  <string[]>x.json();
+    }).catch((t: Response) => t.json());
+  }
 }

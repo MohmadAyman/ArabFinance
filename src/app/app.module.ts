@@ -12,16 +12,12 @@ import {NewsComponent} from './news.component';
 import {PagenotfoundComponent} from './pagenotfound.component';
 import {StockService} from './stock.service';
 import {Angular2TokenService , A2tUiModule } from 'angular2-token';
-<<<<<<< HEAD
 import {AskBidService} from './asksbids.service';
-const approutes: Routes = [{path: 'Home', component: AppComponent},
-=======
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import {MdButtonModule, MdCheckboxModule} from '@angular/material';
-import {MdTabsModule} from '@angular/material';
+// import {MdTabsModule} from '@angular/material'; MdTabsModule,, BrowserAnimationsModule
 
 const approutes: Routes = [{path: '', component: LoginComponent},
->>>>>>> 978f96104afbcde6822b7ba8bc9c01f3f96bc2db
 { path: 'Watchlist', component: WatchlistComponent } ,
 { path: 'News', component: NewsComponent} ,
 { path: 'Market', component: MarketComponent} ,
@@ -33,7 +29,7 @@ const approutes: Routes = [{path: '', component: LoginComponent},
     AppComponent , LoginComponent , MarketComponent , MoreComponent , WatchlistComponent , NewsComponent , PagenotfoundComponent
   ],
   imports: [
-    MdTabsModule, BrowserModule , FormsModule , HttpModule , BrowserAnimationsModule , RouterModule.forRoot(approutes) , A2tUiModule
+     BrowserModule , FormsModule , HttpModule  , RouterModule.forRoot(approutes) , A2tUiModule
   ],
   providers: [StockService , Angular2TokenService , AskBidService],
   bootstrap: [AppComponent]

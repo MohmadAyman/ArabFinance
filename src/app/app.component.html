@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <!-- <html> -->
-<div class="card text-center">
+<!-- <div class="card text-center">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
 
@@ -22,9 +22,17 @@
         </ul>
     </div>
 
-</div>
+</div> -->
 
-<router-outlet></router-outlet>
+<md-tab-group>
+  <md-tab label="Watchlist"><app-watchlist></app-watchlist></md-tab>
+  <md-tab label="Market"><app-market></app-market></md-tab>
+  <md-tab label="News"><app-news></app-news></md-tab> 
+  <md-tab label="Login"><app-login></app-login></md-tab>
+
+</md-tab-group>
+
+<!-- <router-outlet></router-outlet> -->
 
 <!-- <ul>
     <li *ngFor="let item of stocks">{{item.high}}</li>

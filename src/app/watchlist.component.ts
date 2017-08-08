@@ -10,9 +10,9 @@ import {Names} from './models/names.interface';
     <button (click)="changepressed()" [hidden]="pressed">Edit</button>
     <button (click)="falsepressed()" [hidden]="!pressed"> save </button>
     <ul *ngIf="pressed">
-    <li *ngFor="let item of names">
+    <li *ngFor="let item of names ; let i=index">
         {{item[0]}}
-    <input type="checkbox" (ngModel)="userfilter">
+    <input type="checkbox" [(ngModel)]="userfilter[i]"> {{userfilter[i]}}
     </li>
     </ul>
     `,
@@ -63,10 +63,11 @@ export class WatchlistComponent implements OnInit {
               temp.checkinc();
               this.objs.push(temp);
         }
-        console.log(this.userfilter);
   }
       falsepressed() {
                 this.pressed = false;
+                console.log(this.userfilter);
+
   //               this.displayed = [];
   //       // console.log(this.objs);
   //       for (let i = 0 ; i < this.names.length ; i++) {

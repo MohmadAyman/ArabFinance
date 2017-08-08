@@ -50,7 +50,7 @@ export class WatchlistComponent implements OnInit {
  this.Stockservice = Stockservice;
   }
   ngOnInit() {
-     for (let i = 0 ; i < 4; i++) {
+     for (let i = 0 ; i < this.names.length; i++) {
         this.userfilter[i]  = false;
       }
     this.Stockservice.getnames().subscribe(data  => { this.names = data;
@@ -68,6 +68,7 @@ export class WatchlistComponent implements OnInit {
   }
   initializeobjects(names: string[] , stocks: string[]) {
    // for (let i = 0; i < names.length; i++) {
+              console.log(this.stocks);
               this.infodisplayed = true;
               this.displayedstock = new Stock();
              // let temp: Stock = new Stock();
@@ -78,6 +79,7 @@ export class WatchlistComponent implements OnInit {
               this.displayedstock.netchange = Number(stocks[1]);
               this.displayedstock.percentchange = Number(stocks[2]);
               this.displayedstock.checkinc();
+              console.log(this.displayedstock);
               // this.objs.push(temp);
      //   }
   }
@@ -105,8 +107,10 @@ export class WatchlistComponent implements OnInit {
               this.displayednames.pop();
             }
   }
+  console.log(this.Stockservice.getstock(this.displayed));
    this.Stockservice.getstock(this.displayed). subscribe((data: string[] ) => {this.str = data;
               this.stocks.push(this.str);
+              console.log(this.stocks);
              // this.values = this.dummy;
           //  console.log(this.names[0][0]);
           //   console.log(this.names.length);

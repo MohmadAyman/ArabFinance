@@ -13,6 +13,7 @@ import {PagenotfoundComponent} from './pagenotfound.component';
 import {StockService} from './stock.service';
 import {Angular2TokenService , A2tUiModule } from 'angular2-token';
 import {AskBidService} from './asksbids.service';
+import {CompanyService} from './company.service';
 // import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -33,7 +34,7 @@ const approutes: Routes = [{path: '', component: LoginComponent},
   imports: [
     MdTabsModule, BrowserModule , FormsModule , HttpModule , RouterModule.forRoot(approutes) , A2tUiModule
   ],
-  providers: [StockService , Angular2TokenService , AskBidService],
+  providers: [StockService , Angular2TokenService , AskBidService , CompanyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

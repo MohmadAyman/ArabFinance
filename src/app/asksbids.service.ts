@@ -2,6 +2,7 @@ import {  OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Http , Response} from '@angular/http';
+import {SerResponse} from './response.interface';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
@@ -14,24 +15,24 @@ export class AskBidService {
     //     this.nameobj.push(strigarr);
     // }
   }
-  getasks(reuter: string): Observable<string[]> {
-     let link = 'http://beta2.arabfinance.com/mobileapi/rpc/market/QuoteAsks?Code=';
+  getasks(reuter: string): Observable<SerResponse> {
+     let link = 'https://www.arabfinance.com/apis/market/QuoteAsks?Code=';
     link = link + reuter;
      // console.log(link);
       return this.http
       .get(link)
       .map( x => {
-      return  <string[]>x.json();
+      return  <SerResponse>x.json();
     }).catch((t: Response) => t.json());
   }
-  getbids(reuter: string): Observable<string[]> {
-      let link = 'http://beta2.arabfinance.com/mobileapi/rpc/market/QuoteBids?Code=';
+  getbids(reuter: string): Observable<SerResponse> {
+      let link = 'https://www.arabfinance.com/apis/market/QuoteBids?Code=';
     link = link + reuter;
      // console.log(link);
       return this.http
       .get(link)
       .map( x => {
-      return  <string[]>x.json();
+      return  <SerResponse>x.json();
     }).catch((t: Response) => t.json());
   }
 }

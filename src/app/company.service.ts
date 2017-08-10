@@ -8,30 +8,35 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import {  OnInit } from '@angular/core';
+import {Newsresponse} from './newsresponse.interface';
+import {Newsdetailsresponse} from './newsdetailsresponse.interface';
 @Injectable()
 export class CompanyService {
   Comapnies: Rouiter[]= new Array();
   constructor (private http: Http) {
 
   }
-  getnews(id: Date): Observable<News> {
- let link = 'http://beta1.arabfinance.com/mobileapi/rpc/market/GetNews?lastPostingTime=';
-    link = link + id + '&count=10&isArabic=false';
-     // console.log(link);
+  getnews(date: Date, count: number, isArabic: boolean): Observable<Newsresponse> {
+ let link = 'https://www.arabfinance.com/apis/market/GetNews?lastPostingTime=';
+ let temp = '';
+ temp = date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
+    link = link + temp + '&count=' + count + '&isArabic=' + isArabic;
+     console.log(link);
       return this.http
       .get(link)
       .map( x => {
-      return  <string[]>x.json();
+      return  <Newsresponse>x.json();
     }).catch((t: Response) => t.json());
   }
 
-   getnewsdetails(id: number): Observable<Newsbody> {
- let link = 'http://beta1.arabfinance.com/mobileapi/rpc/market/GetNewsDetails?newsId=';
-    link = link + id ;
+   getnewsdetails(id: number): Observable<Newsdetailsresponse> {
+ let link = 'https://www.arabfinance.com/apis/market/GetNewsDetails?newsId=';
+  link = link + id ;
+     console.log(link);
       return this.http
       .get(link)
       .map( x => {
-      return  <string[]>x.json();
+      return  <Newsdetailsresponse>x.json();
     }).catch((t: Response) => t.json());
   }
 }

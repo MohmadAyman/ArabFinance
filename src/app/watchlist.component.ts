@@ -11,7 +11,9 @@ import {Newsresponse} from './newsresponse.interface';
 import {Newsdetailsresponse} from './newsdetailsresponse.interface';
 import {Detailsupdateresponse} from './detailsupdateresponse.interface';
 import {Detailsresponse} from './details.interface';
+import {MarketDetails} from './marketsummary.interface';
 import {Chartobjectresponse} from './chartobjresponse.interface';
+import {GetService} from './else.service';
 @Component({
   selector: 'app-watchlist',
   // templateUrl: './name.component.html',
@@ -71,11 +73,13 @@ export class WatchlistComponent implements OnInit {
   stockdetails: Detailsresponse;
   stockupdates: SerResponse;
   stockdetailsupdates: Detailsupdateresponse;
+  MarketDetails: MarketDetails;
   from= new Date('2017-5-1');
   chart: Chartobjectresponse;
    // dummy: JSON;
 
-   constructor( Stockservice: StockService , AskBidService: AskBidService , CompanyService: CompanyService) {
+   constructor( Stockservice: StockService , AskBidService: AskBidService , CompanyService: CompanyService,
+     private GetService: GetService) {
  this.Stockservice = Stockservice;
   this.AskBidService = AskBidService;
   this.CompanyService = CompanyService;
@@ -93,23 +97,23 @@ export class WatchlistComponent implements OnInit {
   }
   changepressed() {
         this.pressed = true;
-        this.AskBidService.getasks(this.List.result[0][0]).subscribe(data  => { this.Asks = data;
-            // this.Asks.push(this.Ask);
-            // this.values = this.dummy;
-               console.log(this.Asks);
-          //   console.log(this.names.length);
-           } );
-         this.AskBidService.getbids(this.List.result[0][0]).subscribe(data  => { this.Bids = data;
-            // this.Bids.push(this.Bid);
-            // this.values = this.dummy;
-               console.log(this.Bids);
-          //   console.log(this.names.length);
-           } );
-        this.CompanyService.getnews(this.date, this.count, this.isArabic).subscribe(data  => {this.News = data;
-          console.log(this.News);
-           } );
-        this.CompanyService.getnewsdetails(406691).subscribe(data  => {this.Newsbody = data;
-          console.log(this.Newsbody);
+        // this.AskBidService.getasks(this.List.result[0][0]).subscribe(data  => { this.Asks = data;
+        //     // this.Asks.push(this.Ask);
+        //     // this.values = this.dummy;
+        //        console.log(this.Asks);
+        //   //   console.log(this.names.length);
+        //    } );
+        //  this.AskBidService.getbids(this.List.result[0][0]).subscribe(data  => { this.Bids = data;
+        //     // this.Bids.push(this.Bid);
+        //     // this.values = this.dummy;
+        //        console.log(this.Bids);
+        //   //   console.log(this.names.length);
+        //    } );
+        // this.CompanyService.getnewsrelated('egts').subscribe(data  => {this.News = data;
+        //   console.log(this.News);
+        //    } );
+        this.GetService.getquotetrades('egts', 65696863).subscribe(data  => {this.stockdetails = data;
+          console.log(this.stockdetails);
            } );
   }
   infonotdisp() {

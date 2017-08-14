@@ -39,4 +39,15 @@ export class CompanyService {
       return  <Newsdetailsresponse>x.json();
     }).catch((t: Response) => t.json());
   }
+  getnewsrelated(id: string): Observable<Newsresponse> {
+ let link = 'http://staging5.arabfinance.com/apis/market/GetNewsRelatedTo?Code=';
+  link = link + id ;
+     console.log(link);
+      return this.http
+      .get(link)
+      .map( x => {
+      return  <Newsdetailsresponse>x.json();
+    }).catch((t: Response) => t.json());
+  }
 }
+
